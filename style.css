@@ -1,0 +1,51 @@
+/*---Tab-P Chrome Extension
+-----Made by Conor Gaffney, 2012---*/
+body {
+  font-family: 'Lucida Grande', Arial, Helvetica, sans-serif;
+  background-color: #444;
+}
+form {
+  margin: 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+li {
+  padding: 10px;
+  border: 1px solid #FFF;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+input[type="text"] {
+  width: 10em;
+  font-size: 2em;
+  padding: 20px;
+  border-radius: 5px;
+  border: 3px solid #eaeaea;
+  background-color: #eee;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+input[type="submit"] {
+  display: none;
+}
+li:nth-child(odd) {
+  background-color: #eaeaea;
+}
+li:nth-child(even) {
+  background-color: #f4f4f4;
+}
+a:focus {
+  outline: none;
+  text-decoration: underline;
+}
+li.selected {
+  background-color: #9dc5fb;
+  -webkit-transition: background-color 0.3s;
+}

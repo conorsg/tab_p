@@ -1,0 +1,19 @@
+{
+	"name" : "Tab P",
+	"version" : "1.0",
+	"manifest_version" : 2,
+	"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+	"description" : "Search and select from your open tabs by searching with command+p",
+	"icons" : { 
+				"16": "icon.png",
+				"48": "icon.png",
+				"128": "icon.png"
+	},
+	"browser_action": {
+    	"default_icon": "icon_4.png",
+    	"default_popup": "popup.html"
+  	},
+	"permissions" : [
+		"tabs", "http://*/*"
+	]
+}
