@@ -33,6 +33,8 @@
   //writes ordered list of tabs
   function writeList(tabsData){
     for (var i = 0; i < tabsData.length; i++) {
+      if (tabsData[i].score == 0)
+        continue;
       $('ul').append('<li><img src="'+tabsData[i].favIconUrl+'" /><a href="#">'+tabsData[i].title+'</a></li>');
       ( function () {
         var x = i;
