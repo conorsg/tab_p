@@ -80,8 +80,8 @@
   getTabs();
 
   $(doc).ready(function() {
-    $('#target').submit(function(e) {
-     
+    $('#query').keyup(function(e) {
+
       e.preventDefault();
       var input = $('input[type="text"]').val();
       $('ul').empty();
@@ -93,8 +93,11 @@
         runQuery(input);
         writeList(tabsData);
         $('li:first-child').addClass('selected');
-        $('.selected a').focus();
       }
+    });
+    $('#query').change(function(e) {
+      if (tabsData.length > 0)
+        openTab(0);
     });
   });
 
