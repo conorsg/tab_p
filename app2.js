@@ -18,8 +18,13 @@ function query(input) {
   })
 }
 
-function list() {
-
+function list(tabs) {
+  tabs.forEach(function(t) {
+    $('ul').append( '<li><img src="'+t.favIconUrl+'" /><a href="#">'+t.title+'</a></li>' )
+    $('a').eq( tabs.indexOf(t) ).click(function(e) {
+      chrome.tabs.update()
+    })
+  })
 }
 
 function init() {
