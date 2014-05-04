@@ -1,11 +1,15 @@
-# Refactored to Coffee Script, 2014
+# New API version and refactored to Coffee Script, 2014
 
-getTabs = ->
-    chrome.tabs.getAllInWindow(tabList) {
-        window.tabs = tabList
-        tabList.score
-        tabsData = tabsList
-    }
+tabs = chrome.tabs.query(
+  { currentWindow: true },
+  (e) ->
+    return e
+)
 
 query = (input) ->
-    
+  title.toLowerCase().score(input) for title in tabs.title
+
+makeList = () ->
+
+
+do init = ->

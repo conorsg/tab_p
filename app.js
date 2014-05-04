@@ -16,13 +16,13 @@
 
   //runs search term against tab properties using qs_score.js (http://code.google.com/p/rails-oceania/source/browse/lachiecox/qs_score/trunk/qs_score.js)
   function runQuery(input) {
-    
+
     for (var i = 0; i < tabsData.length; i++) {
       titleQuery = tabsData[i].title.toLowerCase().score(input);
       urlQuery = tabsData[i].url.score(input);
 
       //weight title match over url match and set each tab's score
-      tabsData[i].score = titleQuery; 
+      tabsData[i].score = titleQuery;
     }
 
     tabsData.sort(function(a,b){
@@ -39,7 +39,7 @@
         $('a').eq(x).click(function(e) {
           openTab(x);
         });
-      }) ();    
+      }) ();
     }
   }
 
@@ -72,21 +72,21 @@
         }
       }
     });
-  });    
+  });
 
   //let's do this
   getTabs();
 
   $(doc).ready(function() {
     $('#target').submit(function(e) {
-     
+
       e.preventDefault();
       var input = $('input[type="text"]').val();
       $('ul').empty();
 
       if (input === '') {
         $('ul').append('<li class ="empty">Please enter a search term</li>');
-      } 
+      }
       else {
         runQuery(input);
         writeList(tabsData);
