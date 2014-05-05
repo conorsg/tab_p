@@ -1,10 +1,11 @@
 // Refactored 2014
 // Dependencies: qsScore, jQuery
+var tabs;
 
-var tabs = chrome.tabs.query(
+chrome.tabs.query(
   { currentWindow: true},
-  function(e) { return e }
-)
+  function(e) { tabs = e }
+);
 
 function query(input) {
   tabs.forEach(function(t) {
@@ -21,8 +22,8 @@ function query(input) {
 function list(tabs) {
   tabs.forEach(function(t) {
     $('ul').append( '<li><img src="'+t.favIconUrl+'" /><a href="#">'+t.title+'</a></li>' )
-    $('a').eq( tabs.indexOf(t) ).click(function(e) {
-      chrome.tabs.update()
+    $('a').eq(tabs.indexOf(t)).click(function(e) {
+      chrome.tabs.update(t.id, updateProperties = { active: true })
     })
   })
 }
