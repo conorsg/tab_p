@@ -1,8 +1,8 @@
 {
 	"name" : "Tab P",
 	"version" : "1.2",
-	"manifest_version" : 2,
-	"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+	"manifest_version" : 3,
+	"content_security_policy": "script-src 'self' https://code.jquery.com; object-src 'self'",
 	"description" : "Search and select from your open tabs by searching with command+p",
 	"icons" : {
 				"16": "icon.png",
