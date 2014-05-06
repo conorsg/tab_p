@@ -16,13 +16,13 @@
 
   //runs search term against tab properties using qs_score.js (http://code.google.com/p/rails-oceania/source/browse/lachiecox/qs_score/trunk/qs_score.js)
   function runQuery(input) {
-    
+
     for (var i = 0; i < tabsData.length; i++) {
       titleQuery = tabsData[i].title.toLowerCase().score(input);
       urlQuery = tabsData[i].url.score(input);
 
       //weight title match over url match and set each tab's score
-      tabsData[i].score = titleQuery; 
+      tabsData[i].score = titleQuery;
     }
 
     tabsData.sort(function(a,b){
@@ -33,13 +33,15 @@
   //writes ordered list of tabs
   function writeList(tabsData){
     for (var i = 0; i < tabsData.length; i++) {
+      if (tabsData[i].score == 0)
+        continue;
       $('ul').append('<li><img src="'+tabsData[i].favIconUrl+'" /><a href="#">'+tabsData[i].title+'</a></li>');
       ( function () {
         var x = i;
         $('a').eq(x).click(function(e) {
           openTab(x);
         });
-      }) ();    
+      }) ();
     }
   }
 
@@ -72,27 +74,30 @@
         }
       }
     });
-  });    
+  });
 
   //let's do this
   getTabs();
 
   $(doc).ready(function() {
-    $('#target').submit(function(e) {
-     
+    $('#query').keyup(function(e) {
+
       e.preventDefault();
       var input = $('input[type="text"]').val();
       $('ul').empty();
 
       if (input === '') {
         $('ul').append('<li class ="empty">Please enter a search term</li>');
-      } 
+      }
       else {
         runQuery(input);
         writeList(tabsData);
         $('li:first-child').addClass('selected');
-        $('.selected a').focus();
       }
+    });
+    $('#query').change(function(e) {
+      if (tabsData.length > 0)
+        openTab(0);
     });
   });
 
