@@ -10,7 +10,7 @@
 				"128": "icon.png"
 	},
 	"browser_action": {
-    	"default_icon": "icon_4.png",
+    	"default_icon": "icon_bar.png",
     	"default_popup": "popup.html"
   	},
 	"permissions" : [
